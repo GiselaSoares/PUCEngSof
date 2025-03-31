@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <title>Minha Biblioteca Pessoal</title>
+</head>
+<body>
+
+    <!-- Cabeçalho de informações do sistema -->
+    <header>
+        <div class="title">
+            <h1>Lista de Livros</h1>
+        </div>
+        <div class="banner">
+            <img src="img/banner.jpg" alt="Banner de Livros">
+        </div>
+    </header>
+
+    <!-- Adicionando novos livros -->
+    <h2>Adicionar Livro</h2>
+    <form id="form-cadastro"> 
+        <section class="newItem">
+            <input type="text" id="newTitle" placeholder="Título:" required>
+            <input type="text" id="newAuthor" placeholder="Autor:" required>
+            <input type="text" id="newGenre" placeholder="Gênero:" required>
+            <input type="text" id="newSummary" placeholder="Resumo:" required>
+            <select id="status_leitura">
+                <option value="Lido">Lido</option>
+                <option value="Não lido">Não lido</option>
+            </select>
+            <button type="submit" class="addBtn">Adicionar</button>
+        </section>
+    </form>
+
+    <!-- Tabela de Livros Lidos -->
+    <h3>Lidos</h3>
+    <section class="items">
+        <table id="readBooks">
+            <colgroup>
+                <col style="width: 25%;"> <!-- Título -->
+                <col style="width: 25%;"> <!-- Autor -->
+                <col style="width: 25%;"> <!-- Gênero -->
+                <col style="width: 25%;"> <!-- Resumo -->
+            </colgroup>
+            <tr>
+                <th>Título</th>
+                <th>Autor</th>
+                <th>Gênero</th>
+                <th>Resumo</th>
+            </tr>
+        </table>
+    </section>
+
+    <!-- Tabela de Livros Não Lidos -->
+    <h3>Não Lidos</h3>
+    <section class="items">
+        <table id="unreadBooks">
+            <colgroup>
+                <col style="width: 25%;"> <!-- Título -->
+                <col style="width: 25%;"> <!-- Autor -->
+                <col style="width: 25%;"> <!-- Gênero -->
+                <col style="width: 25%;"> <!-- Resumo -->
+            </colgroup>
+            <tr>
+                <th>Título</th>
+                <th>Autor</th>
+                <th>Gênero</th>
+                <th>Resumo</th>
+                <th>Ação</th>
+            </tr>
+        </table>
+    </section>
+
+    <!-- Tabela de Lista de Desejos -->
+    <h3>Lista de Desejos</h3>
+    <section class="items">
+        <table id="wishlistBooks">
+            <colgroup>
+                <col style="width: 25%;"> <!-- Título -->
+                <col style="width: 25%;"> <!-- Autor -->
+                <col style="width: 25%;"> <!-- Gênero -->
+                <col style="width: 25%;"> <!-- Resumo -->
+            </colgroup>
+            <tr>
+                <th>Título</th>
+                <th>Autor</th>
+                <th>Gênero</th>
+                <th>Resumo</th>
+                <th>Ação</th>
+            </tr>
+        </table>
+    </section>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
