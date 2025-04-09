@@ -1,35 +1,23 @@
-# Minha API
+# API - Minha Biblioteca Pessoal
 
-Este pequeno projeto faz parte do material diático da Disciplina **Desenvolvimento Full Stack Básico** 
+Esta é a API do projeto Minha Biblioteca Pessoal, construída utilizando o Flask em Python. Ela permite gerenciar a biblioteca pessoal do usuário, com funcionalidades para adicionar livros, listar livros lidos e não lidos e armazenar informações no banco de dados SQLite.
 
-O objetivo aqui é ilutsrar o conteúdo apresentado ao longo das três aulas da disciplina.
+# Estrutura do Projeto
+A API é composta pelos seguintes arquivos:
 
----
-## Como executar 
+**app.py**: Arquivo principal que define as rotas da API, incluindo a funcionalidade para adicionar livros e retornar listas de livros lidos e não lidos.
 
+**schemas/livro.py**: Contém os modelos de dados da API, como a estrutura de um livro.
 
-Será necessário ter todas as libs python listadas no `requirements.txt` instaladas.
-Após clonar o repositório, é necessário ir ao diretório raiz, pelo terminal, para poder executar os comandos descritos abaixo.
+**create_db.py**: Script que cria o banco de dados SQLite e a tabela necessária para armazenar os livros.
 
-> É fortemente indicado o uso de ambientes virtuais do tipo [virtualenv](https://virtualenv.pypa.io/en/latest/installation.html).
+**logger.py**: Configuração do log da API, responsável por registrar as ações e erros durante a execução.
 
-```
-(env)$ pip install -r requirements.txt
-```
+**index.html**: Arquivo HTML para a interface de usuário, se necessário para o frontend da API.
 
-Este comando instala as dependências/bibliotecas, descritas no arquivo `requirements.txt`.
+# Funcionalidades
+Adicionar Livro: A API permite adicionar um livro à biblioteca, informando título, autor, gênero, resumo e status de leitura.
 
-Para executar a API  basta executar:
+**Listar Livros Lidos:** A API fornece uma rota para listar todos os livros que foram marcados como "Lidos".
 
-```
-(env)$ flask run --host 0.0.0.0 --port 5000
-```
-
-Em modo de desenvolvimento é recomendado executar utilizando o parâmetro reload, que reiniciará o servidor
-automaticamente após uma mudança no código fonte. 
-
-```
-(env)$ flask run --host 0.0.0.0 --port 5000 --reload
-```
-
-Abra o [http://localhost:5000/#/](http://localhost:5000/#/) no navegador para verificar o status da API em execução.
+**Listar Livros Não Lidos:** A API fornece uma rota para listar todos os livros que ainda não foram lidos.
