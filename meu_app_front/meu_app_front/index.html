@@ -10,55 +10,61 @@
 </head>
 <body>
 
-    <!-- Cabeçalho de informações do sistema -->
     <header>
         <div class="title">
-            <h1>Lista de Livros</h1>
+            <h1>Minha Biblioteca</h1>
         </div>
         <div class="banner">
-            <img src="img/banner.jpg" alt="Banner de Livros">
+            <img src="meu_app_front/img/estantedelivros.jpg" alt="Estante de Livros">
         </div>
     </header>
 
     <!-- Adicionando novos livros -->
-    <h2>Adicionar Livro</h2>
-    <form id="form-cadastro"> 
-        <section class="newItem">
-            <input type="text" id="newTitle" placeholder="Título:" required>
-            <input type="text" id="newAuthor" placeholder="Autor:" required>
-            <input type="text" id="newGenre" placeholder="Gênero:" required>
-            <input type="text" id="newSummary" placeholder="Resumo:" required>
-            <select id="status_leitura">
-                <option value="Lido">Lido</option>
-                <option value="Não lido">Não lido</option>
-            </select>
-            <button type="submit" class="addBtn">Adicionar</button>
-        </section>
-    </form>
+    <div class="form-container">
+        <h2>Novo Livro</h2>
+        <form id="formAdicionarLivro">
+            <label for="nome">Nome do Livro:</label>
+            <input type="text" id="nome" name="nome" required><br><br>
+
+            <label for="autor">Autor:</label>
+            <input type="text" id="autor" name="autor" required><br><br>
+
+            <label for="genero">Gênero:</label>
+            <input type="text" id="genero" name="genero" required><br><br>
+
+            <label for="resumo">Resumo:</label>
+            <textarea id="resumo" name="resumo" required></textarea><br><br>
+
+            <label for="status">Status:</label>
+            <select id="status" name="status">
+                <option value="lido">Lido</option>
+                <option value="nao_lido">Não Lido</option>
+            </select><br><br>
+
+            <button type="submit">Adicionar Livro</button>
+        </form>
+    </div>
 
     <!-- Tabela de Livros Lidos -->
-    <h3>Lidos</h3>
-    <section class="items">
-        <table id="readBooks">
-            <colgroup>
-                <col style="width: 25%;"> <!-- Título -->
-                <col style="width: 25%;"> <!-- Autor -->
-                <col style="width: 25%;"> <!-- Gênero -->
-                <col style="width: 25%;"> <!-- Resumo -->
-            </colgroup>
+    <h2>Livros Lidos</h2>
+    <table id="tabela-livros-lidos">
+        <thead>
             <tr>
-                <th>Título</th>
+                <th>Nome</th>
                 <th>Autor</th>
                 <th>Gênero</th>
                 <th>Resumo</th>
             </tr>
-        </table>
-    </section>
+        </thead>
+        <tbody>
+            <!-- Os livros lidos serão listados aqui -->
+        </tbody>
+    </table>
 
     <!-- Tabela de Livros Não Lidos -->
-    <h3>Não Lidos</h3>
+    <h2>Livros Não Lidos</h2>
     <section class="items">
-        <table id="unreadBooks">
+        <table id="tabela-livros-nao-lidos">
             <colgroup>
                 <col style="width: 25%;"> <!-- Título -->
                 <col style="width: 25%;"> <!-- Autor -->
@@ -70,27 +76,6 @@
                 <th>Autor</th>
                 <th>Gênero</th>
                 <th>Resumo</th>
-                <th>Ação</th>
-            </tr>
-        </table>
-    </section>
-
-    <!-- Tabela de Lista de Desejos -->
-    <h3>Lista de Desejos</h3>
-    <section class="items">
-        <table id="wishlistBooks">
-            <colgroup>
-                <col style="width: 25%;"> <!-- Título -->
-                <col style="width: 25%;"> <!-- Autor -->
-                <col style="width: 25%;"> <!-- Gênero -->
-                <col style="width: 25%;"> <!-- Resumo -->
-            </colgroup>
-            <tr>
-                <th>Título</th>
-                <th>Autor</th>
-                <th>Gênero</th>
-                <th>Resumo</th>
-                <th>Ação</th>
             </tr>
         </table>
     </section>

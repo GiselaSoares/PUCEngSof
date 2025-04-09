@@ -1,30 +1,48 @@
-# meu-app-api/app.py
-from fastapi import FastAPI
-from .models.livro import LivroModel
-from .schemas.livro import LivroCreate, LivroResponse
-from .logger import get_logger
+from flask import Flask, request, jsonify, render_template
 
-# Inicialização da aplicação FastAPI
-app = FastAPI()
+app = Flask(__name__)
 
-# Configuração de log
-logger = get_logger()
+# Listas para armazenar livros lidos e não lidos
+livros_lidos = []
+livros_nao_lidos = []
 
-@app.on_event("startup")
-async def startup_event():
-    logger.info("A aplicação FastAPI foi iniciada.")
+@app.route('/')
+def index():
+    return render_template('index.html')
 
-@app.on_event("shutdown")
-async def shutdown_event():
-    logger.info("A aplicação FastAPI foi encerrada.")
+@app.route('/adicionar_livro', methods=['POST'])
+def adicionar_livro():
+    # Pega os dados do formulário
+    nome = request.form['nome']
+    autor = request.form['autor']
+    genero = request.form['genero']
+    resumo = request.form['resumo']
+    status = request.form['status']
 
-# Rota para adicionar livro
-@app.post("/livros/", response_model=LivroResponse)
-async def adicionar_livro(livro: LivroCreate):
-    LivroModel.add_livro(livro)
-    return livro
+    # Cria o livro
+    livro = {
+        'nome': nome,
+        'autor': autor,
+        'genero': genero,
+        'resumo': resumo,
+        'status': status
+    }
 
-# Rota para listar livros
-@app.get("/livros/", response_model=list[LivroResponse])
-async def listar_livros(status: str = None):
-    return LivroModel.get_livros(status)
+    # Adiciona o livro na lista correspondente
+    if status == 'lido':
+        livros_lidos.append(livro)
+    elif status == 'nao_lido':
+        livros_nao_lidos.append(livro)
+
+    return jsonify({"message": "Livro adicionado com sucesso!"})
+
+@app.route('/livros_lidos', methods=['GET'])
+def get_livros_lidos():
+    return jsonify(livros_lidos)
+
+@app.route('/livros_nao_lidos', methods=['GET'])
+def get_livros_nao_lidos():
+    return jsonify(livros_nao_lidos)
+
+if __name__ == '__main__':
+    app.run(debug=True)

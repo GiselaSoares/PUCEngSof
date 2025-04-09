@@ -1,4 +1,4 @@
-# meu-app-api/create_db.py
+from meu_app_api.app import app, db
 import sqlite3
 
 def criar_tabela():

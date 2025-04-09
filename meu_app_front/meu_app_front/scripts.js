@@ -1,38 +1,78 @@
-// scripts.js
-document.getElementById("form-cadastro").addEventListener("submit", async (e) => {
-  e.preventDefault(); // Impede que o formulário seja enviado da forma tradicional
+// Função para carregar livros lidos da API e exibir na tabela
+function carregarLivrosLidos() {
+    fetch('/livros_lidos')
+        .then(response => response.json())
+        .then(livros => {
+            const tabelaLivrosLidos = document.getElementById('tabela-livros-lidos').getElementsByTagName('tbody')[0];
+            tabelaLivrosLidos.innerHTML = ''; // Limpar a tabela existente
+            livros.forEach(livro => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${livro.nome}</td>
+                    <td>${livro.autor}</td>
+                    <td>${livro.genero}</td>
+                    <td>${livro.resumo}</td>
+                `;
+                tabelaLivrosLidos.appendChild(tr);
+            });
+        });
+}
 
-  // Obtendo os dados dos campos
-  const titulo = document.getElementById("newTitle").value;
-  const autor = document.getElementById("newAuthor").value;
-  const genero = document.getElementById("newGenre").value;
-  const resumo = document.getElementById("newSummary").value;
-  const statusLeitura = document.getElementById("status_leitura").value;
+// Função para carregar livros não lidos da API e exibir na tabela
+function carregarLivrosNaoLidos() {
+    fetch('/livros_nao_lidos')
+        .then(response => response.json())
+        .then(livros => {
+            const tabelaLivrosNaoLidos = document.getElementById('tabela-livros-nao-lidos').getElementsByTagName('tbody')[0];
+            tabelaLivrosNaoLidos.innerHTML = ''; // Limpar a tabela existente
+            livros.forEach(livro => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${livro.nome}</td>
+                    <td>${livro.autor}</td>
+                    <td>${livro.genero}</td>
+                    <td>${livro.resumo}</td>
+                `;
+                tabelaLivrosNaoLidos.appendChild(tr);
+            });
+        });
+}
 
-  // Enviando os dados via POST para a API
-  try {
-      const response = await fetch("/api/livros", {  // URL para sua API que adiciona livros
-          method: "POST",
-          headers: {
-              "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-              titulo,
-              autor,
-              genero,
-              resumo,
-              status_leitura: statusLeitura
-          }),
-      });
+// Função para adicionar livro na tabela
+function adicionarLivro(event) {
+    event.preventDefault();
 
-      const result = await response.json();
-      if (response.ok) {
-          console.log("Livro adicionado com sucesso!", result);
-          // Aqui você pode adicionar o livro à lista na interface
-      } else {
-          console.error("Erro ao adicionar livro:", result);
-      }
-  } catch (error) {
-      console.error("Erro de conexão:", error);
-  }
-});
+    // Pegando os valores do formulário
+    const nome = document.getElementById('nome').value;
+    const autor = document.getElementById('autor').value;
+    const genero = document.getElementById('genero').value;
+    const resumo = document.getElementById('resumo').value;
+    const status = document.getElementById('status').value;
+
+    // Selecionando a tabela de acordo com o status
+    const tabela = status === 'lido' ? document.getElementById('tabela-livros-lidos').getElementsByTagName('tbody')[0] : document.getElementById('tabela-livros-nao-lidos').getElementsByTagName('tbody')[0];
+
+    // Criando a linha para o novo livro
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+        <td>${nome}</td>
+        <td>${autor}</td>
+        <td>${genero}</td>
+        <td>${resumo}</td>
+    `;
+
+    // Adicionando a nova linha à tabela
+    tabela.appendChild(tr);
+
+    // Limpando os campos do formulário
+    document.getElementById('formAdicionarLivro').reset();
+}
+
+// Carregar livros ao iniciar a página
+window.onload = function() {
+    carregarLivrosLidos();
+    carregarLivrosNaoLidos();
+
+    // Associando a função ao evento de submit do formulário
+    document.getElementById('formAdicionarLivro').addEventListener('submit', adicionarLivro);
+};
