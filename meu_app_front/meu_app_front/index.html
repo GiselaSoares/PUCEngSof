@@ -15,7 +15,7 @@
             <h1>Minha Biblioteca</h1>
         </div>
         <div class="banner">
-            <img src="meu_app_front/img/estantedelivros.jpg" alt="Estante de Livros">
+            <img src="img/estantedelivros.jpeg" alt="Estante de Livros">
         </div>
     </header>
 
@@ -48,17 +48,19 @@
     <!-- Tabela de Livros Lidos -->
     <h2>Livros Lidos</h2>
     <table id="tabela-livros-lidos">
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Autor</th>
-                <th>Gênero</th>
-                <th>Resumo</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Os livros lidos serão listados aqui -->
-        </tbody>
+        <colgroup>
+            <col style="width: 25%;"> <!-- Título -->
+            <col style="width: 25%;"> <!-- Autor -->
+            <col style="width: 25%;"> <!-- Gênero -->
+            <col style="width: 25%;"> <!-- Resumo -->
+        </colgroup>
+        <tr>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>Gênero</th>
+            <th>Resumo</th>
+            <th><img src="https://cdn-icons-png.flaticon.com/512/126/126468.png" width="15px" height="15px"></th>
+        </tr>
     </table>
 
     <!-- Tabela de Livros Não Lidos -->
@@ -76,6 +78,7 @@
                 <th>Autor</th>
                 <th>Gênero</th>
                 <th>Resumo</th>
+                <th><img src="https://cdn-icons-png.flaticon.com/512/126/126468.png" width="15px" height="15px"></th>
             </tr>
         </table>
     </section>
@@ -83,3 +86,4 @@
     <script src="scripts.js"></script>
 </body>
 </html>
+
