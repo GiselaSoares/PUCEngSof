@@ -2,6 +2,10 @@
 
 Esta é a API do projeto Minha Biblioteca Pessoal, construída utilizando o Flask em Python. Ela permite gerenciar a biblioteca pessoal do usuário, com funcionalidades para adicionar livros, listar livros lidos e não lidos e armazenar informações no banco de dados SQLite.
 
+Futuras implementacoes:
+> O usuário poderá mover livros da tabela ' Livros não Lidos' para a tabela ' Livros Lidos'
+> O usuário poderá incluir livros na tabela 'Lista de Desejos' e mover para a tabela 'Livros não lidos'
+
 # Estrutura do Projeto
 A API é composta pelos seguintes arquivos:
 
