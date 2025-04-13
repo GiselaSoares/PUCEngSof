@@ -33,7 +33,7 @@ function criarLinhaLivro(livro) {
         <td>${livro.nome}</td>
         <td>${livro.autor}</td>
         <td>${livro.genero}</td>
-        <td>${livro.resumo}</td>
+        <td class="resumo-ellipsis">${livro.resumo}</td>
         <td><button class="remover-livro" title="Remover Livro">❌</button></td>
     `;
 

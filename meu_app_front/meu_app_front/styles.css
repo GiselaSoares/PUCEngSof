@@ -57,6 +57,23 @@ th {
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
+.resumo-ellipsis {
+    max-width: 200px; /* você pode ajustar esse valor conforme o layout da sua tabela */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.resumo-ellipsis:hover {
+    overflow: visible;
+    white-space: normal;
+    background-color: #fff;
+    position: absolute;
+    z-index: 1;
+    padding: 4px;
+    border: 1px solid #ccc;
+}
+
 #nome, #autor, #genero, #resumo, #status {
     width: 100%;
     padding: 10px;
